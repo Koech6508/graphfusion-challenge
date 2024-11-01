@@ -1,0 +1,23 @@
+# Design Decisions
+# Architecture Choices
+Memory Bank: I implemented a differentiable memory bank to allow the model to write and read information dynamically. This structure enables the model to learn where to store important information and retrieve it when needed, enhancing its ability to remember past inputs.
+
+Confidence Scoring: I added a confidence scoring mechanism using a simple feedforward neural network. This design helps evaluate the reliability of the retrieved memories by combining the original query and the retrieved data. This scoring assists in making more informed decisions based on the memory outputs.
+
+# Structure of Memory Bank and Confidence Scoring
+The MemoryBank class consists of methods to write data into memory using attention weights and read data through an attention mechanism. This two-step process ensures that the model can selectively focus on the most relevant memories based on the query input.
+
+The ConfidenceScoring class takes the concatenated query and retrieved memory as input and outputs a confidence score using a linear layer followed by a sigmoid activation function. This output gives a measure of certainty about the retrieved memory's relevance.
+
+# Hyperparameter Choices
+Sequence Length: Set to 10 to provide a balanced number of past inputs for each training example, allowing sufficient context without overwhelming the model.
+
+Feature Dimension: Chosen as 8 to keep the representation compact while retaining enough information for effective learning.
+
+Batch Size: Selected as 16 to ensure efficient training without exhausting memory resources.  
+
+Memory Size: Set to 32 to provide enough slots for storing diverse information without making the model too complex.  
+
+Learning Rate: Chosen as 0.001 to allow gradual updates to the model parameters, preventing overshooting the optimal solution during training.
+
+Number of Epochs: Set to 5 as a starting point to observe model performance without overly long training times.  
