@@ -7,7 +7,10 @@ class TestMemoryBank(unittest.TestCase):
     def setUp(self):
         self.memory_size = 3
         self.feature_dim = 5
-        self.memory_bank = MemoryBank(self.memory_size, self.feature_dim)
+        #self.memory_bank = MemoryBank(self.memory_size, self.feature_dim)
+        self.memory_bank = MemoryBank(memory_size=self.memory_size, feature_dim=self.feature_dim)
+
+
 
     def test_write_and_read(self):
         input_data = torch.randn(3, self.feature_dim)

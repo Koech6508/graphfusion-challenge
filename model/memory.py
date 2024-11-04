@@ -27,7 +27,7 @@ class MemoryBank(nn.Module):
             write_weights: Where to write (batch_size, memory_size)
         """
         # TODO: Implement memory writing mechanism
-           # Ensure weighted_data has the correct dimensions
+        # Ensure weighted_data has the correct dimensions
         weighted_data = torch.matmul(write_weights.T, input_data)  # Shape: (memory_size, feature_dim)
         self.memory_bank.data = self.memory_bank.data + weighted_data
         
